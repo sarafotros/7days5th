@@ -16,32 +16,33 @@ window.addEventListener('load', () => {
 
             const proxy = "https://cors-anywhere.herokuapp.com/"
             const api = `${proxy}http://api.weatherapi.com/v1/current.json?key=1b8542c358264e639e6140721202404&q=${lat},${long}`;
-            const apiArab = `${proxy}http://api.weatherapi.com/v1/current.json?key=1b8542c358264e639e6140721202404&q=${lat},${long}lang=fr`;
-             fetch(apiArab).then((response) => {
+            const apiForcast = `${proxy}http://api.weatherapi.com/v1/forecast.json?key=1b8542c358264e639e6140721202404&q=${lat},${long}&days=8`;
+         fetch(apiForcast).then((response) => {
                 return response.json();
              })
             .then(data => {
                 console.log(data);
                 const { temp_c, condition } = data.current;
+                let icon = condition.text
                 tempDegree.textContent = temp_c;
-                tempDescription.textContent = condition.text;
+                tempDescription.textContent = icon;
                 locationTimezone.textContent = data.location.region.split(',')[1];
                 // locationZone.textContent = data.location.name;
-
-
+                // setIcon(icon, document.querySelector('.icon'));
             })
         });
-       
-        
         
     } else {
         h3.textContent = "The browser needs to access to your location"
     }
 
     
-    // function setIcon(icon, iconId) {
-    //     cosnt skycons = new skycons()
-    // }
+    function setIcon(icon, iconId) {
+        const skycons = new Skycons({"color" : "black" });
+        const currentIcon = icon.toUpperCase();
+        skycons.play();
+        return skycons.set(iconId, Skycons[currentIcon])
+    }
 
 
 
