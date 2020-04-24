@@ -5,7 +5,10 @@ window.addEventListener('load', () => {
 	let tempDegree = document.querySelector('.temp-degree');
 	let locationTimezone = document.querySelector('.location-timezone');
 	let locationZone = document.querySelector('.location-zone');
-	// let tempDegree = document.querySelector('.temp-degree');
+    let degreeSection = document.querySelector('.temp-degree');
+    let degreeSpan = document.querySelector('span');
+    let azanSobh = document.querySelector('.sobh')
+  
 
 	const APIkey = '1b8542c358264e639e6140721202404';
 	if (navigator.geolocation) {
@@ -15,20 +18,32 @@ window.addEventListener('load', () => {
 
 			const proxy = 'https://cors-anywhere.herokuapp.com/';
 			const api = `${proxy}http://api.weatherapi.com/v1/current.json?key=1b8542c358264e639e6140721202404&q=${lat},${long}`;
-			const apiForcast = `${proxy}http://api.weatherapi.com/v1/forecast.json?key=1b8542c358264e639e6140721202404&q=${lat},${long}&days=8`;
+			const apiForcast = `${proxy}http://api.weatherapi.com/v1/forecast.json?key=1b8542c358264e639e6140721202404&days=8&q=${lat},${long}`;
 			fetch(apiForcast)
 				.then((response) => {
 					return response.json();
 				})
 				.then((data) => {
 					console.log(data);
-					const { temp_c, condition } = data.current;
+					console.log(data.forecast.forecastday[0].astro.sunrise);
+					const { temp_c, condition, temp_f } = data.current;
 					let icon = condition.text;
-					tempDegree.textContent = temp_c;
+                    tempDegree.textContent = temp_c;
 					tempDescription.textContent = icon;
 					locationTimezone.textContent = data.location.region.split(',')[1];
-					// locationZone.textContent = data.location.name;
-					setIcon(icon, document.querySelector('.icon'));
+                    locationZone.textContent = data.location.name;
+                    azanSobh.textContent = data.forecast.forecastday[0].astro.sunrise;
+                    setIcon(icon, document.querySelector('.icon'));
+                    
+                    degreeSection.addEventListener('click', () => {   
+                        if (degreeSpan.textContent === 'C') {
+                            degreeSpan.textContent = 'F';
+                            tempDegree.textContent = temp_f;
+                        } else {
+                            degreeSpan.textContent = 'C';
+                            tempDegree.textContent = temp_c;
+                        }
+                    })
 				});
 		});
 	} else {

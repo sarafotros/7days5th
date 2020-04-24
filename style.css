@@ -21,6 +21,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
 }
 .temperature {
     flex-direction: column;
@@ -32,10 +33,17 @@ body{
 }
 .degree-section span {
     margin: 10px;
-    font-size: 30px;
+    font-size: 20px;
 }
 
-degree-section h2 {
-    font-size: 40px;
-    
+.degree-section h2 {
+    font-size: 30px;  
+}
+.temp-description{
+    height: 20%;
+}
+.sahar {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
 }
