@@ -26,7 +26,7 @@ window.addEventListener('load', () => {
 				})
 				.then((data) => {
 					console.log(data);
-					console.log(data.forecast.forecastday[0].astro.sunset);
+					console.log(data.forecast.forecastday[1].astro.sunset);
 					const { temp_c, condition, temp_f } = data.current;
 					let icon = condition.text;
                     tempDegree.textContent = temp_c;

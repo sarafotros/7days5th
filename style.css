@@ -19,7 +19,7 @@ body{
     height: 30vh;
     width: 50%;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     flex-direction: column;
 }
@@ -41,6 +41,8 @@ body{
 }
 .temp-description{
     height: 20%;
+    font-size: 30px;  
+
 }
 .sahar ,.eftar{
     display: flex;
@@ -49,4 +51,7 @@ body{
     padding-top: 40px;
     text-align: center;
     justify-content: center;
+}
+i {
+    padding-right: 10px;
 }
