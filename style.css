@@ -42,8 +42,11 @@ body{
 .temp-description{
     height: 20%;
 }
-.sahar {
+.sahar ,.eftar{
     display: flex;
     flex-direction: column;
-    padding-bottom: 20px;
+    padding-bottom: 40px;
+    padding-top: 40px;
+    text-align: center;
+    justify-content: center;
 }

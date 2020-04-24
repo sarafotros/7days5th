@@ -8,6 +8,7 @@ window.addEventListener('load', () => {
     let degreeSection = document.querySelector('.temp-degree');
     let degreeSpan = document.querySelector('span');
     let azanSobh = document.querySelector('.sobh')
+    let azanMaghreb = document.querySelector('.maghreb');
   
 
 	const APIkey = '1b8542c358264e639e6140721202404';
@@ -25,7 +26,7 @@ window.addEventListener('load', () => {
 				})
 				.then((data) => {
 					console.log(data);
-					console.log(data.forecast.forecastday[0].astro.sunrise);
+					console.log(data.forecast.forecastday[0].astro.sunset);
 					const { temp_c, condition, temp_f } = data.current;
 					let icon = condition.text;
                     tempDegree.textContent = temp_c;
@@ -33,6 +34,7 @@ window.addEventListener('load', () => {
 					locationTimezone.textContent = data.location.region.split(',')[1];
                     locationZone.textContent = data.location.name;
                     azanSobh.textContent = data.forecast.forecastday[0].astro.sunrise;
+                    azanMaghreb.textContent = data.forecast.forecastday[0].astro.sunset;
                     setIcon(icon, document.querySelector('.icon'));
                     
                     degreeSection.addEventListener('click', () => {   
