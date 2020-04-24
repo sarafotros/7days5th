@@ -1,52 +1,47 @@
 window.addEventListener('load', () => {
-    let long;
-    let lat;
-    let tempDescription = document.querySelector('.temp-description');
-    let tempDegree = document.querySelector('.temp-degree');
-    let locationTimezone= document.querySelector('.location-timezone');
-    let locationZone = document.querySelector('.location-zone');
-    // let tempDegree = document.querySelector('.temp-degree');
+	let long;
+	let lat;
+	let tempDescription = document.querySelector('.temp-description');
+	let tempDegree = document.querySelector('.temp-degree');
+	let locationTimezone = document.querySelector('.location-timezone');
+	let locationZone = document.querySelector('.location-zone');
+	// let tempDegree = document.querySelector('.temp-degree');
 
+	const APIkey = '1b8542c358264e639e6140721202404';
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition((position) => {
+			long = position.coords.longitude;
+			lat = position.coords.latitude;
 
-    const APIkey = '1b8542c358264e639e6140721202404';
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
-            long = position.coords.longitude;
-            lat = position.coords.latitude;
+			const proxy = 'https://cors-anywhere.herokuapp.com/';
+			const api = `${proxy}http://api.weatherapi.com/v1/current.json?key=1b8542c358264e639e6140721202404&q=${lat},${long}`;
+			const apiForcast = `${proxy}http://api.weatherapi.com/v1/forecast.json?key=1b8542c358264e639e6140721202404&q=${lat},${long}&days=8`;
+			fetch(apiForcast)
+				.then((response) => {
+					return response.json();
+				})
+				.then((data) => {
+					console.log(data);
+					const { temp_c, condition } = data.current;
+					let icon = condition.text;
+					tempDegree.textContent = temp_c;
+					tempDescription.textContent = icon;
+					locationTimezone.textContent = data.location.region.split(',')[1];
+					// locationZone.textContent = data.location.name;
+					setIcon(icon, document.querySelector('.icon'));
+				});
+		});
+	} else {
+		h3.textContent = 'The browser needs to access to your location';
+	}
 
-            const proxy = "https://cors-anywhere.herokuapp.com/"
-            const api = `${proxy}http://api.weatherapi.com/v1/current.json?key=1b8542c358264e639e6140721202404&q=${lat},${long}`;
-            const apiForcast = `${proxy}http://api.weatherapi.com/v1/forecast.json?key=1b8542c358264e639e6140721202404&q=${lat},${long}&days=8`;
-         fetch(apiForcast).then((response) => {
-                return response.json();
-             })
-            .then(data => {
-                console.log(data);
-                const { temp_c, condition } = data.current;
-                let icon = condition.text
-                tempDegree.textContent = temp_c;
-                tempDescription.textContent = icon;
-                locationTimezone.textContent = data.location.region.split(',')[1];
-                // locationZone.textContent = data.location.name;
-                // setIcon(icon, document.querySelector('.icon'));
-            })
-        });
-        
-    } else {
-        h3.textContent = "The browser needs to access to your location"
-    }
-
-    
-    function setIcon(icon, iconId) {
-        const skycons = new Skycons({"color" : "black" });
-        const currentIcon = icon.toUpperCase();
-        skycons.play();
-        return skycons.set(iconId, Skycons[currentIcon])
-    }
-
-
-
-
+	function setIcon(icon, iconId) {
+		const skycons = new Skycons({'color': 'black'});
+        // const currentIcon = icon.split(' ').join('_').toUpperCase();
+        let currentIcon = icon.replace(/\s/g, '_').toUpperCase();
+		skycons.play();
+		return skycons.set(iconId, Skycons[currentIcon]);
+	}
 });
 
 // {location: {…}, current: {…}}
