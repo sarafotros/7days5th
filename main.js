@@ -1,20 +1,24 @@
 window.addEventListener('load', () => {
 	let long;
-    let lat;
-    
-    let now  = new Date();
-    var hour = now.getHours()
-    // var hour = 11
+	let lat;
+
+	let now = new Date();
+	var hour = now.getHours();
+	// var hour = 11
 
 	let tempDescription = document.querySelector('.temp-description');
 	let tempDegree = document.querySelector('.temp-degree');
 	let locationTimezone = document.querySelector('.location-timezone');
 	let locationZone = document.querySelector('.location-zone');
-    let degreeSection = document.querySelector('.temp-degree');
-    let degreeSpan = document.querySelector('span');
-    let azanSobh = document.querySelector('.sobh')
-    let azanMaghreb = document.querySelector('.maghreb');
-    
+	let degreeSection = document.querySelector('.temp-degree');
+	let degreeSpan = document.querySelector('span');
+	let azanSobh = document.querySelector('.sobh');
+	let azanMaghreb = document.querySelector('.maghreb');
+	let image = document.querySelector('.today-icon');
+	let imageTomorrow = document.querySelector('.forecast-img');
+	let textTomorrow = document.querySelector('.forecast-text');
+	let degreeMinTomorrow = document.querySelector('.forecast-min');
+	let degreeMaxTomorrow = document.querySelector('.forecast-max');
 
 	const APIkey = '1b8542c358264e639e6140721202404';
 	if (navigator.geolocation) {
@@ -31,28 +35,32 @@ window.addEventListener('load', () => {
 				})
 				.then((data) => {
 					console.log(data);
-					console.log(data.location.localtime);
-					console.log();
+					console.log(data.forecast.forecastday[1].day.mintemp_c);
+					
 					const { temp_c, condition, temp_f } = data.current;
 					let icon = condition.text;
-                    tempDegree.textContent = temp_c;
+					tempDegree.textContent = temp_c;
 					tempDescription.textContent = icon;
 					locationTimezone.textContent = data.location.region.split(',')[1];
-                    locationZone.textContent = data.location.name;
-                    azanSobh.textContent = data.forecast.forecastday[0].astro.sunrise;
-                    azanMaghreb.textContent = data.forecast.forecastday[0].astro.sunset;
+					locationZone.textContent = data.location.name;
+					azanSobh.textContent = data.forecast.forecastday[0].astro.sunrise;
+					azanMaghreb.textContent = data.forecast.forecastday[0].astro.sunset;
+					image.src = condition.icon;
+                    imageTomorrow.src = data.forecast.forecastday[1].day.condition.icon;
+                    textTomorrow.textContent = data.forecast.forecastday[1].day.condition.text;
+                    degreeMinTomorrow.textContent += data.forecast.forecastday[1].day.mintemp_c;
+                    degreeMaxTomorrow.textContent += data.forecast.forecastday[1].day.maxtemp_c;
+					setIcon(icon, document.querySelector('.icon'));
 
-                    setIcon(icon, document.querySelector('.icon'));
-                    
-                    degreeSection.addEventListener('click', () => {   
-                        if (degreeSpan.textContent === 'C') {
-                            degreeSpan.textContent = 'F';
-                            tempDegree.textContent = temp_f;
-                        } else {
-                            degreeSpan.textContent = 'C';
-                            tempDegree.textContent = temp_c;
-                        }
-                    })
+					degreeSection.addEventListener('click', () => {
+						if (degreeSpan.textContent === 'C') {
+							degreeSpan.textContent = 'F';
+							tempDegree.textContent = temp_f;
+						} else {
+							degreeSpan.textContent = 'C';
+							tempDegree.textContent = temp_c;
+						}
+					});
 				});
 		});
 	} else {
@@ -60,16 +68,15 @@ window.addEventListener('load', () => {
 	}
 
 	function setIcon(icon, iconId) {
-		const skycons = new Skycons({'color': 'royalblue'});
-        // const currentIcon = icon.split(' ').join('_').toUpperCase();
-        // let currentIcon = icon.replace(/\s/g, '_').toUpperCase();
-        if (hour<= 6 || hour >= 19) {
-            currentIcon = "CLEAR_NIGHT"
-            console.log(hour);
-            
-        } else {
-            currentIcon = "CLEAR_DAY"
-        }
+		const skycons = new Skycons({ color: 'royalblue' });
+		// const currentIcon = icon.split(' ').join('_').toUpperCase();
+		// let currentIcon = icon.replace(/\s/g, '_').toUpperCase();
+		if (hour <= 6 || hour >= 19) {
+			currentIcon = 'CLEAR_NIGHT';
+			console.log(hour);
+		} else {
+			currentIcon = 'CLEAR_DAY';
+		}
 		skycons.play();
 		return skycons.set(iconId, Skycons[currentIcon]);
 	}
@@ -81,5 +88,4 @@ window.addEventListener('load', () => {
 // condition:
 // code: 1000
 // icon: "//cdn.weatherapi.com/weather/64x64/day/113.png"
-// 
-
+//
