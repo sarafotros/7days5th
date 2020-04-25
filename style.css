@@ -62,9 +62,10 @@ i {
     margin: 5px;
     padding: 5px;
 }
-/* .today-icon{
-   height: 100px;
-} */
+.today-icon{
+  margin: 15px;
+ padding: 15px;
+}
 
 footer {
     height: 50vh;
