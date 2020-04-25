@@ -6,6 +6,9 @@
 
 body{
     height: 100vh;
+    /* margin: 30px; */
+    padding-top: 40px;
+    padding-bottom: 40px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -41,16 +44,16 @@ body{
 }
 .temp-description{
     height: 20%;
-    font-size: 30px;  
+    font-size: 26px;  
 
 }
 .sahar ,.eftar{
     display: flex;
     flex-direction: column;
-    padding-bottom: 40px;
-    padding-top: 40px;
+    padding-bottom: 30px;
+    padding-top: 30px;
      /* height: 30vh; */
-    font-size:22px;
+    font-size:20px;
     text-align: center;
     justify-content: center;
 }
@@ -58,10 +61,10 @@ i {
     padding-right: 10px;
 }
 
-/* .icon{
+.icon{
     margin: 5px;
     padding: 5px;
-} */
+}
 .today-icon{
   margin: 15px;
  padding: 15px;
