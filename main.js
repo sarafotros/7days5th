@@ -48,16 +48,16 @@ window.addEventListener('load', () => {
 					image.src = condition.icon;
                     imageTomorrow.src = data.forecast.forecastday[1].day.condition.icon;
                     textTomorrow.textContent = data.forecast.forecastday[1].day.condition.text;
-                    degreeMinTomorrow.textContent += data.forecast.forecastday[1].day.mintemp_c;
-                    degreeMaxTomorrow.textContent += data.forecast.forecastday[1].day.maxtemp_c;
+                    degreeMinTomorrow.textContent += data.forecast.forecastday[1].day.mintemp_c + ' ºc';
+                    degreeMaxTomorrow.textContent += data.forecast.forecastday[1].day.maxtemp_c + ' ºc';
 					setIcon(icon, document.querySelector('.icon'));
 
 					degreeSection.addEventListener('click', () => {
-						if (degreeSpan.textContent === 'C') {
-							degreeSpan.textContent = 'F';
+						if (degreeSpan.textContent === ' ºC') {
+							degreeSpan.textContent = ' ºF';
 							tempDegree.textContent = temp_f;
 						} else {
-							degreeSpan.textContent = 'C';
+							degreeSpan.textContent = ' ºC';
 							tempDegree.textContent = temp_c;
 						}
 					});
@@ -68,7 +68,7 @@ window.addEventListener('load', () => {
 	}
 
 	function setIcon(icon, iconId) {
-		const skycons = new Skycons({ color: 'royalblue' });
+		const skycons = new Skycons({ color: 'gold' });
 		// const currentIcon = icon.split(' ').join('_').toUpperCase();
 		// let currentIcon = icon.replace(/\s/g, '_').toUpperCase();
 		if (hour <= 6 || hour >= 19) {

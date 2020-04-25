@@ -11,15 +11,15 @@ body{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    /* font-weight: bolder; */
+    font-weight: bolder;
     align-items: center;
-    background: linear-gradient(rgba(241, 241, 82, 0.842),rgba(84, 189, 245, 0.961));
+    background: linear-gradient(rgba(51, 166, 228, 0.961),rgba(247, 224, 49, 0.851));
 	font-family: 'Comic Neue', cursive;
-    color: rgba(5, 65, 117, 0.817);
+    color: rgba(7, 62, 109, 0.774);
 }
 .location, .temperature {
-    height: 35vh;
-    width: 60%;
+    height: 40vh;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,7 +44,7 @@ body{
 
 }
 .temp-description{
-    height: 20%;
+    height: 24%;
     padding: 20px;
     font-size: 20px;  
 
@@ -53,9 +53,9 @@ body{
     display: flex;
     flex-direction: column;
     padding-bottom: 30px;
-    padding-top: 30px;
+    /* padding-top: 30px; */
      /* height: 30vh; */
-    font-size:20px;
+    font-size:22px;
     text-align: center;
     justify-content: center;
 }
@@ -63,23 +63,25 @@ i {
     padding-right: 10px;
 }
 
-.icon{
+/* .icon{
     margin: 5px;
     padding: 5px;
-}
+} */
 .today-icon{
   margin: 15px;
  padding: 15px;
 }
 
 footer {
-    height: 32vh;
+    height: 35vh;
     width: 100%;
     display: flex;
     flex-direction:row;
    justify-content: space-around;
    align-items: center;
-   padding-bottom: 60px;
+   padding-bottom: 66px;
    padding-left: 15px;
    padding-right: 22px;
+   font-size: 18px;
+   font-weight: bolder;
 }
