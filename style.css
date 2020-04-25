@@ -13,7 +13,7 @@ body{
     align-items: center;
     background: linear-gradient(rgba(241, 241, 82, 0.842),rgba(84, 189, 245, 0.961));
 	font-family: 'Comic Neue', cursive;
-    color: rgba(5, 65, 117, 0.726);
+    color: rgba(5, 65, 117, 0.817);
 }
 .location, .temperature {
     height: 30vh;
@@ -56,6 +56,12 @@ body{
 }
 i {
     padding-right: 10px;
+}
+
+.icon{
+    margin:10px;
+    padding: 10px;
+
 }
 footer {
     height: 30vh;

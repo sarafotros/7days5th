@@ -1,6 +1,11 @@
 window.addEventListener('load', () => {
 	let long;
-	let lat;
+    let lat;
+    
+    let now  = new Date();
+    var hour = now.getHours()
+    // var hour = 11
+
 	let tempDescription = document.querySelector('.temp-description');
 	let tempDegree = document.querySelector('.temp-degree');
 	let locationTimezone = document.querySelector('.location-timezone');
@@ -9,7 +14,7 @@ window.addEventListener('load', () => {
     let degreeSpan = document.querySelector('span');
     let azanSobh = document.querySelector('.sobh')
     let azanMaghreb = document.querySelector('.maghreb');
-  
+    
 
 	const APIkey = '1b8542c358264e639e6140721202404';
 	if (navigator.geolocation) {
@@ -26,7 +31,8 @@ window.addEventListener('load', () => {
 				})
 				.then((data) => {
 					console.log(data);
-					console.log(data.forecast.forecastday[1].astro.sunset);
+					console.log(data.location.localtime);
+					console.log();
 					const { temp_c, condition, temp_f } = data.current;
 					let icon = condition.text;
                     tempDegree.textContent = temp_c;
@@ -35,6 +41,7 @@ window.addEventListener('load', () => {
                     locationZone.textContent = data.location.name;
                     azanSobh.textContent = data.forecast.forecastday[0].astro.sunrise;
                     azanMaghreb.textContent = data.forecast.forecastday[0].astro.sunset;
+
                     setIcon(icon, document.querySelector('.icon'));
                     
                     degreeSection.addEventListener('click', () => {   
@@ -53,9 +60,16 @@ window.addEventListener('load', () => {
 	}
 
 	function setIcon(icon, iconId) {
-		const skycons = new Skycons({'color': 'black'});
+		const skycons = new Skycons({'color': 'royalblue'});
         // const currentIcon = icon.split(' ').join('_').toUpperCase();
-        let currentIcon = icon.replace(/\s/g, '_').toUpperCase();
+        // let currentIcon = icon.replace(/\s/g, '_').toUpperCase();
+        if (hour<= 6 || hour >= 19) {
+            currentIcon = "CLEAR_NIGHT"
+            console.log(hour);
+            
+        } else {
+            currentIcon = "CLEAR_DAY"
+        }
 		skycons.play();
 		return skycons.set(iconId, Skycons[currentIcon]);
 	}
@@ -67,38 +81,5 @@ window.addEventListener('load', () => {
 // condition:
 // code: 1000
 // icon: "//cdn.weatherapi.com/weather/64x64/day/113.png"
-// text: "Sunny"
-// __proto__: Object
-// feelslike_c: 23.5
-// feelslike_f: 74.4
-// gust_kph: 8.6
-// gust_mph: 5.4
-// humidity: 33
-// is_day: 1
-// last_updated: "2020-04-24 16:30"
-// last_updated_epoch: 1587742212
-// precip_in: 0
-// precip_mm: 0
-// pressure_in: 30.4
-// pressure_mb: 1014
-// temp_c: 22
-// temp_f: 71.6
-// uv: 6
-// vis_km: 10
-// vis_miles: 6
-// wind_degree: 90
-// wind_dir: "E"
-// wind_kph: 6.8
-// wind_mph: 4.3
-// __proto__: Object
-// location:
-// country: "United Kingdom"
-// lat: 51.55
-// localtime: "2020-04-24 16:40"
-// localtime_epoch: 1587742824
-// lon: 0.06
-// name: "Manor Park"
-// region: "Newham, Greater London"
-// tz_id: "Europe/London"
-// __proto__: Object
-// __proto__: Object
+// 
+
