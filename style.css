@@ -73,13 +73,13 @@ i {
 }
 
 footer {
-    height: 30vh;
+    height: 32vh;
     width: 100%;
     display: flex;
     flex-direction:row;
    justify-content: space-around;
    align-items: center;
-   padding-bottom: 40px;
+   padding-bottom: 60px;
    padding-left: 15px;
    padding-right: 22px;
 }
