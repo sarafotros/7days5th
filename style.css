@@ -7,12 +7,11 @@
 body{
     height: 100vh;
     /* margin: 30px; */
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 20px;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    font-weight: bolder;
+    /* font-weight: bolder; */
     align-items: center;
     background: linear-gradient(rgba(241, 241, 82, 0.842),rgba(84, 189, 245, 0.961));
 	font-family: 'Comic Neue', cursive;
@@ -33,7 +32,7 @@ body{
     display: flex;
     align-items: center;
     cursor: pointer;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 .degree-section span {
     margin: 10px;
@@ -45,7 +44,7 @@ body{
 
 }
 .temp-description{
-    /* height: 20%; */
+    height: 20%;
     padding: 20px;
     font-size: 20px;  
 
@@ -74,13 +73,13 @@ i {
 }
 
 footer {
-    height: 50vh;
+    height: 30vh;
     width: 100%;
     display: flex;
     flex-direction:row;
    justify-content: space-around;
    align-items: center;
-   padding-bottom: 45px;
+   /* padding-bottom: 45px; */
    padding-left: 15px;
    padding-right: 22px;
 }
