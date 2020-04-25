@@ -80,8 +80,8 @@ footer {
    justify-content: space-around;
    align-items: center;
    padding-bottom: 66px;
-   padding-left: 15px;
-   padding-right: 22px;
-   font-size: 18px;
+   padding-left: 10px;
+   padding-right: 20px;
+   /* font-size: 18px; */
    font-weight: bolder;
 }
