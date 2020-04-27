@@ -20,7 +20,7 @@ window.addEventListener('load', () => {
 	let degreeMinTomorrow = document.querySelector('.forecast-min');
 	let degreeMaxTomorrow = document.querySelector('.forecast-max');
 
-	const APIkey = '1b8542c358264e639e6140721202404';
+
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition((position) => {
 			long = position.coords.longitude;
@@ -47,8 +47,8 @@ window.addEventListener('load', () => {
 					azanMaghreb.textContent = data.forecast.forecastday[0].astro.sunset;
 					image.src = condition.icon;
                     imageTomorrow.src = data.forecast.forecastday[1].day.condition.icon;
-                    textTomorrow.textContent = data.forecast.forecastday[1].day.condition.text;
-                    degreeMinTomorrow.textContent += data.forecast.forecastday[1].day.mintemp_c + ' ºc';
+                    textTomorrow.textContent = data.forecast.forecastday[1].day.condition.text ;
+                    degreeMinTomorrow.textContent +=  data.forecast.forecastday[1].day.mintemp_c + ' ºc ' ;
                     degreeMaxTomorrow.textContent += data.forecast.forecastday[1].day.maxtemp_c + ' ºc';
 					setIcon(icon, document.querySelector('.icon'));
 

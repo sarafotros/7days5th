@@ -7,16 +7,15 @@
 
 body{
     height: 100vh;
-    margin: 15px 0px;
-    padding-top: 20px;
+    margin: 35px 0px;
     display: flex;
-    margin-top: 20px;
+    margin-top: 30px;
     margin-bottom: 20px;
     justify-content: center;
     flex-direction: column;
     font-weight: bolder;
     align-items: center;
-    background: linear-gradient(rgba(50, 198, 235, 0.959),rgba(128, 220, 243, 0.959),rgba(236, 208, 83, 0.822),rgba(190, 55, 129, 0.767),rgba(231, 64, 13, 0.664));
+    background: linear-gradient(rgba(43, 222, 235, 0.959),rgba(170, 43, 113, 0.817));
 	font-family: 'Comic Neue', cursive;
     color: rgba(7, 62, 109, 0.774);
 }
