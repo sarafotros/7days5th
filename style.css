@@ -15,7 +15,7 @@ body{
     flex-direction: column;
     font-weight: bolder;
     align-items: center;
-    background: linear-gradient(rgba(43, 222, 235, 0.959),rgba(170, 43, 113, 0.817));
+    background: linear-gradient(rgba(154, 227, 240, 0.938),rgba(156, 71, 146, 0.851));
 	font-family: 'Comic Neue', cursive;
     color: rgba(7, 62, 109, 0.774);
 }
@@ -62,9 +62,9 @@ body{
 .sahar ,.eftar{
     display: flex;
     flex-direction: column;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    /* height: 15vh; */
+    padding-bottom: 10px; 
+     padding-top: 10px; 
+    height: 25vh;
     font-size:18px;
     text-align: center;
     justify-content: center;
