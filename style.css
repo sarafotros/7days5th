@@ -15,7 +15,7 @@ body{
     flex-direction: column;
     font-weight: bolder;
     align-items: center;
-    background: linear-gradient(rgba(154, 227, 240, 0.938),rgba(156, 71, 146, 0.851));
+    background: linear-gradient(rgba(87, 168, 226, 0.938),rgba(249, 199, 229, 0.68),rgba(224, 112, 195, 0.87));
 	font-family: 'Comic Neue', cursive;
     color: rgba(7, 62, 109, 0.774);
 }
